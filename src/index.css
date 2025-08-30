@@ -1,91 +1,240 @@
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow-light: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --accent-color: #00f2fe;
+  --success-color: #4ade80;
+  --warning-color: #fbbf24;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-/* import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css'; */
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Righteous&display=swap');
 
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Architects Daughter', cursive !important;
-  font-family: 'Righteous', cursive !important;
-}
-.customise{
-  cursor: pointer;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
-@media only screen and (max-width: 600px) {
-  .sketch-picker{
-    width: 70px!important;
-    /* height: 80px !important; */
+body {
+  background: var(--dark-gradient);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--text-primary);
+}
+
+/* Modern glassmorphism effects */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-light);
+}
+
+/* Modern button styles */
+.modern-btn {
+  background: var(--accent-gradient);
+  border: none;
+  border-radius: 50px;
+  padding: 12px 32px;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modern-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.6);
+}
+
+.modern-btn:active {
+  transform: translateY(0);
+}
+
+.modern-btn-secondary {
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.modern-btn-secondary:hover {
+  background: var(--accent-color);
+  color: white;
+}
+
+/* Clean background */
+.clean-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: var(--dark-gradient);
+}
+
+.clean-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(79, 172, 254, 0.1) 0%, transparent 70%),
+    radial-gradient(circle at 80% 20%, rgba(102, 126, 234, 0.08) 0%, transparent 70%);
+  opacity: 0.6;
+}
+
+/* Typography */
+.hero-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+}
+
+.hero-subtitle {
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Customizer styles */
+.customise {
+  cursor: pointer;
+  position: relative;
+}
+
+.customise::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--dark-gradient);
+  z-index: -1;
+}
+
+/* Color picker modern styling */
+.color-picker-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--shadow-light);
+}
+
+/* Modern card hover effects */
+.hover-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Enhanced Mobile Responsiveness */
+@media only screen and (max-width: 768px) {
+  .sketch-picker {
+    width: 200px !important;
+    transform: scale(0.9);
   }
+  
+  .modern-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .glass-card {
+    padding: 15px !important;
+    margin: 10px;
+    border-radius: 15px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .sketch-picker {
+    width: 180px !important;
+    transform: scale(0.8);
+  }
+
+  .glass-card {
+    padding: 12px !important;
+    margin: 8px;
+    border-radius: 12px;
+  }
+
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .modern-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .hover-card:hover {
+    transform: none;
+  }
+  
+  .modern-btn:hover {
+    transform: none;
+  }
+  
+  /* Larger touch targets */
+  button, .hover-card {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Loading animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
