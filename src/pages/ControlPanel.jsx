@@ -132,22 +132,28 @@ const ControlPanel = () => {
                     left: { xs: '10px', md: '20px' },
                     bottom: { xs: '10px', md: '20px' },
                     right: { xs: '10px', md: 'auto' },
-                    zIndex: 10,
+                    zIndex: 20,
+                    pointerEvents: 'auto',
                     '@media (max-width: 768px)': {
                         position: 'fixed',
                         left: '10px',
                         right: '10px',
                         bottom: '10px',
-                        maxHeight: '60vh',
+                        maxHeight: '40vh',
                         overflowY: 'auto'
+                    },
+                    '@media (max-width: 480px)': {
+                        left: '5px',
+                        right: '5px',
+                        bottom: '5px',
+                        maxHeight: '35vh'
                     }
                 }}
             >
                 <div className="glass-card" style={{ 
                     padding: '15px', 
-                    minWidth: '280px',
                     maxWidth: '100%',
-                    width: 'auto'
+                    width: '100%'
                 }}>
                     <Typography variant="h6" sx={{ color: 'white', fontWeight: 600, marginBottom: 2 }}>
                         Design Controls
@@ -155,7 +161,7 @@ const ControlPanel = () => {
 
                     {/* Action Buttons */}
                     <Grid container spacing={1} sx={{ marginBottom: 2 }}>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} sm={3}>
                             <Button
                                 fullWidth
                                 variant="contained"
@@ -165,13 +171,17 @@ const ControlPanel = () => {
                                     background: 'var(--accent-gradient)',
                                     borderRadius: '8px',
                                     textTransform: 'none',
-                                    fontWeight: 600
+                                    fontWeight: 600,
+                                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                    padding: { xs: '6px 12px', sm: '8px 16px' },
+                                    minHeight: '36px'
                                 }}
                             >
-                                Save
+                                <Box sx={{ display: { xs: 'none', sm: 'inline' } }}>Save</Box>
+                                <Save sx={{ display: { xs: 'inline', sm: 'none' }, fontSize: '18px' }} />
                             </Button>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} sm={3}>
                             <Button
                                 fullWidth
                                 variant="outlined"
@@ -183,16 +193,20 @@ const ControlPanel = () => {
                                     borderRadius: '8px',
                                     textTransform: 'none',
                                     fontWeight: 600,
+                                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                    padding: { xs: '6px 12px', sm: '8px 16px' },
+                                    minHeight: '36px',
                                     '&:hover': {
                                         background: 'var(--accent-color)',
                                         color: 'white'
                                     }
                                 }}
                             >
-                                Reset
+                                <Box sx={{ display: { xs: 'none', sm: 'inline' } }}>Reset</Box>
+                                <Refresh sx={{ display: { xs: 'inline', sm: 'none' }, fontSize: '18px' }} />
                             </Button>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} sm={3}>
                             <Button
                                 fullWidth
                                 variant="contained"
@@ -202,13 +216,17 @@ const ControlPanel = () => {
                                     background: 'var(--secondary-gradient)',
                                     borderRadius: '8px',
                                     textTransform: 'none',
-                                    fontWeight: 600
+                                    fontWeight: 600,
+                                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                    padding: { xs: '6px 12px', sm: '8px 16px' },
+                                    minHeight: '36px'
                                 }}
                             >
-                                Random
+                                <Box sx={{ display: { xs: 'none', sm: 'inline' } }}>Random</Box>
+                                <Shuffle sx={{ display: { xs: 'inline', sm: 'none' }, fontSize: '18px' }} />
                             </Button>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} sm={3}>
                             <Button
                                 fullWidth
                                 variant="outlined"
@@ -220,13 +238,17 @@ const ControlPanel = () => {
                                     borderRadius: '8px',
                                     textTransform: 'none',
                                     fontWeight: 600,
+                                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                    padding: { xs: '6px 12px', sm: '8px 16px' },
+                                    minHeight: '36px',
                                     '&:hover': {
                                         background: 'var(--success-color)',
                                         color: 'white'
                                     }
                                 }}
                             >
-                                Share
+                                <Box sx={{ display: { xs: 'none', sm: 'inline' } }}>Share</Box>
+                                <Share sx={{ display: { xs: 'inline', sm: 'none' }, fontSize: '18px' }} />
                             </Button>
                         </Grid>
                     </Grid>

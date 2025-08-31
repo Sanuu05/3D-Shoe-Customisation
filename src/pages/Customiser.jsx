@@ -53,29 +53,46 @@ const Customiser = () => {
           {/* Clean Background */}
           <div className="clean-bg"></div>
           
-          <Box sx={{ position: 'relative', overflow: 'hidden' }}>
-            <Grid container sx={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
-              <Grid xs={12}>
-                <Canvas />
-              </Grid>
+          <Box sx={{ position: 'relative', overflow: 'hidden', height: '100vh' }}>
+            {/* Canvas takes full screen */}
+            <Canvas />
+            
+            <Grid container sx={{ 
+              position: 'absolute', 
+              top: 0, 
+              left: 0, 
+              width: '100%', 
+              height: '100%', 
+              pointerEvents: 'none',
+              zIndex: 10
+            }}>
+              <Grid item xs={12} sx={{ position: 'relative', height: '100%' }}>
 
-              {/* Modern Color Picker Container */}
-              <Box
-                component={motion.div}
-                {...slideIn}
-                sx={{
-                  position: 'absolute',
-                  right: { xs: '10px', md: '20px' },
-                  top: { xs: '10px', md: '20px' },
-                  zIndex: 10,
-                  '@media (max-width: 768px)': {
-                    position: 'fixed',
-                    right: '10px',
-                    top: '10px',
-                    maxWidth: 'calc(100vw - 20px)'
-                  }
-                }}
-              >
+                {/* Modern Color Picker Container */}
+                <Box
+                  component={motion.div}
+                  {...slideIn}
+                  sx={{
+                    position: 'absolute',
+                    right: { xs: '10px', md: '20px' },
+                    top: { xs: '10px', md: '20px' },
+                    zIndex: 20,
+                    pointerEvents: 'auto',
+                    '@media (max-width: 768px)': {
+                      position: 'fixed',
+                      right: '10px',
+                      top: '10px',
+                      maxWidth: 'calc(100vw - 20px)',
+                      maxHeight: '70vh',
+                      overflowY: 'auto'
+                    },
+                    '@media (max-width: 480px)': {
+                      right: '5px',
+                      top: '5px',
+                      maxWidth: 'calc(100vw - 10px)'
+                    }
+                  }}
+                >
                 <div className="color-picker-container">
                   <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 2 }}>
                     <Palette sx={{ color: 'var(--accent-color)', marginRight: 1 }} />
@@ -87,22 +104,27 @@ const Customiser = () => {
                 </div>
               </Box>
 
-              {/* Modern Back Button */}
-              <Box
-                component={motion.div}
-                {...slideIn}
-                sx={{
-                  position: 'absolute',
-                  left: { xs: '10px', md: '20px' },
-                  top: { xs: '80px', md: '20px' },
-                  zIndex: 10,
-                  '@media (max-width: 768px)': {
-                    position: 'fixed',
-                    left: '10px',
-                    top: '80px'
-                  }
-                }}
-              >
+                {/* Modern Back Button */}
+                <Box
+                  component={motion.div}
+                  {...slideIn}
+                  sx={{
+                    position: 'absolute',
+                    left: { xs: '10px', md: '20px' },
+                    top: { xs: '80px', md: '20px' },
+                    zIndex: 20,
+                    pointerEvents: 'auto',
+                    '@media (max-width: 768px)': {
+                      position: 'fixed',
+                      left: '10px',
+                      top: '80px'
+                    },
+                    '@media (max-width: 480px)': {
+                      left: '5px',
+                      top: '75px'
+                    }
+                  }}
+                >
                 <Button
                   className="modern-btn-secondary"
                   startIcon={<ArrowBack />}
@@ -131,25 +153,31 @@ const Customiser = () => {
                 </Button>
               </Box>
 
-              {/* Modern Current Selection Display */}
-              {snap.current && (
-                <Box
-                  component={motion.div}
-                  {...fadeIn}
-                  sx={{
-                    position: 'absolute',
-                    left: '50%',
-                    top: { xs: '150px', md: '30px' },
-                    transform: 'translateX(-50%)',
-                    zIndex: 10,
-                    '@media (max-width: 768px)': {
-                      position: 'fixed',
-                      top: '150px',
+                {/* Modern Current Selection Display */}
+                {snap.current && (
+                  <Box
+                    component={motion.div}
+                    {...fadeIn}
+                    sx={{
+                      position: 'absolute',
                       left: '50%',
-                      transform: 'translateX(-50%)'
-                    }
-                  }}
-                >
+                      top: { xs: '150px', md: '30px' },
+                      transform: 'translateX(-50%)',
+                      zIndex: 20,
+                      pointerEvents: 'auto',
+                      '@media (max-width: 768px)': {
+                        position: 'fixed',
+                        top: '150px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        maxWidth: 'calc(100vw - 20px)'
+                      },
+                      '@media (max-width: 480px)': {
+                        top: '140px',
+                        maxWidth: 'calc(100vw - 10px)'
+                      }
+                    }}
+                  >
                   <div className="glass-card" style={{ padding: '10px 20px', textAlign: 'center' }}>
                     <Typography 
                       variant="body2" 
@@ -178,39 +206,58 @@ const Customiser = () => {
                         boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
                       }}
                     />
-                  </div>
-                </Box>
-              )}
+                    </div>
+                  </Box>
+                )}
 
-              {/* Floating Instructions */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                style={{
-                  position: 'absolute',
-                  bottom: '30px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  zIndex: 10
-                }}
-              >
-                <div className="glass-card" style={{ padding: '15px 25px', textAlign: 'center' }}>
+                {/* Floating Instructions */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
+                  style={{
+                    position: 'absolute',
+                    bottom: '120px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    zIndex: 20,
+                    maxWidth: 'calc(100vw - 20px)',
+                    pointerEvents: 'auto'
+                  }}
+                >
+                <div className="glass-card" style={{ 
+                  padding: '12px 20px', 
+                  textAlign: 'center',
+                  maxWidth: '100%'
+                }}>
                   <Typography 
                     variant="body2" 
                     sx={{ 
                       color: 'var(--text-secondary)', 
-                      fontSize: '0.9rem',
-                      fontWeight: 400
+                      fontSize: { xs: '0.8rem', md: '0.9rem' },
+                      fontWeight: 400,
+                      display: { xs: 'none', sm: 'block' }
                     }}
                   >
                     Click on shoe parts to customize • ESC to go back • R to reset
                   </Typography>
-                </div>
-              </motion.div>
+                  <Typography 
+                    variant="body2" 
+                    sx={{ 
+                      color: 'var(--text-secondary)', 
+                      fontSize: '0.75rem',
+                      fontWeight: 400,
+                      display: { xs: 'block', sm: 'none' }
+                    }}
+                  >
+                    Tap shoe parts to customize
+                  </Typography>
+                  </div>
+                </motion.div>
 
-              {/* Control Panel */}
-              <ControlPanel />
+                {/* Control Panel */}
+                <ControlPanel />
+              </Grid>
             </Grid>
           </Box>
         </motion.div>

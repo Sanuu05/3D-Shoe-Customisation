@@ -157,34 +157,74 @@ body {
 }
 
 /* Enhanced Mobile Responsiveness */
+
+/* Tablet and small desktop */
+@media only screen and (max-width: 1024px) {
+  .glass-card {
+    padding: 20px !important;
+    margin: 15px;
+  }
+}
+
+/* Mobile landscape and portrait */
 @media only screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  
   .sketch-picker {
-    width: 200px !important;
-    transform: scale(0.9);
+    width: 240px !important;
+    transform: scale(0.95);
   }
   
   .modern-btn {
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 14px;
+    min-height: 44px;
   }
 
   .glass-card {
-    padding: 15px !important;
+    padding: 16px !important;
     margin: 10px;
-    border-radius: 15px;
+    border-radius: 16px;
   }
 
   .hero-title {
     font-size: 2.5rem !important;
-    line-height: 1.2;
+    line-height: 1.1;
+    text-align: center;
   }
 
   .hero-subtitle {
     font-size: 1rem !important;
     margin-bottom: 2rem !important;
+    text-align: center;
+    padding: 0 15px;
+  }
+  
+  /* Mobile home layout */
+  .home {
+    flex-direction: column;
+  }
+  
+  /* Mobile customizer layout */
+  .customise {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .customise canvas {
+    height: 100vh !important;
+    width: 100vw !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1 !important;
   }
 }
 
+/* Small mobile devices */
 @media only screen and (max-width: 480px) {
   .sketch-picker {
     width: 180px !important;
@@ -193,14 +233,49 @@ body {
 
   .glass-card {
     padding: 12px !important;
-    margin: 8px;
+    margin: 6px;
     border-radius: 12px;
   }
 
   .hero-title {
     font-size: 2rem !important;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem !important;
+    margin-bottom: 1.5rem !important;
+    padding: 0 10px;
   }
 
+  .modern-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+    min-height: 44px;
+  }
+  
+  .customise canvas {
+    height: 100vh !important;
+    width: 100vw !important;
+  }
+}
+
+/* Extra small devices */
+@media only screen and (max-width: 360px) {
+  .sketch-picker {
+    width: 180px !important;
+    transform: scale(0.8);
+  }
+  
+  .glass-card {
+    padding: 12px !important;
+    margin: 6px;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+  
   .modern-btn {
     padding: 8px 16px;
     font-size: 12px;
@@ -222,6 +297,38 @@ body {
     min-height: 44px;
     min-width: 44px;
   }
+  
+  /* Touch-specific adjustments */
+  .sketch-picker {
+    touch-action: manipulation;
+  }
+  
+  /* Improve tap targets for color chips */
+  .MuiChip-root {
+    min-height: 36px !important;
+    padding: 4px 8px !important;
+  }
+  
+  /* Better spacing for touch */
+  .glass-card {
+    margin: 12px !important;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .customise canvas {
+    height: 80vh !important;
+  }
+  
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem !important;
+    margin-bottom: 1.5rem !important;
+  }
 }
 
 /* Loading animations */
@@ -237,4 +344,103 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Mobile-specific improvements */
+@media only screen and (max-width: 768px) {
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Mobile home page layout */
+  .home {
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Improve text readability on mobile */
+  .hero-title, .hero-subtitle {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Better button spacing on mobile */
+  .MuiButton-root {
+    margin: 4px !important;
+    min-height: 44px !important;
+  }
+  
+  /* Optimize grid spacing */
+  .MuiGrid-container {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Improve dialog responsiveness */
+  .MuiDialog-paper {
+    margin: 16px !important;
+    width: calc(100% - 32px) !important;
+    max-width: none !important;
+  }
+  
+  /* Mobile customizer fixes */
+  .customise {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Ensure UI elements are above canvas */
+  .color-picker-container,
+  .glass-card {
+    position: relative;
+    z-index: 1000 !important;
+  }
+}
+
+/* Improve color picker mobile experience */
+@media only screen and (max-width: 768px) {
+  .color-picker-container {
+    max-width: 280px;
+    overflow: hidden;
+  }
+  
+  .sketch-picker {
+    width: 260px !important;
+  }
+  
+  .sketch-picker > div {
+    max-width: 260px !important;
+    width: 260px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .color-picker-container {
+    max-width: 240px;
+  }
+  
+  .sketch-picker {
+    width: 220px !important;
+  }
+  
+  .sketch-picker > div {
+    max-width: 220px !important;
+    width: 220px !important;
+  }
+}
+
+/* Safe area adjustments for notched devices */
+@supports (padding: max(0px)) {
+  .customise {
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    padding-left: max(10px, env(safe-area-inset-left));
+    padding-right: max(10px, env(safe-area-inset-right));
+  }
 }

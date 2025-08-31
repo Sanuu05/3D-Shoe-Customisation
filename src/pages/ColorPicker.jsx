@@ -19,11 +19,12 @@ const ColorPicker = () => {
     }
     
     return (
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative', width: '100%', maxWidth: '100%' }}>
             <SketchPicker 
                 color={snap.items[snap.current]}
                 disableAlpha
                 onChange={handleColorChange}
+                width={260}
                 styles={{
                     default: {
                         picker: {
@@ -33,7 +34,8 @@ const ColorPicker = () => {
                             border: '1px solid rgba(255, 255, 255, 0.2)',
                             borderRadius: '15px',
                             boxShadow: '0 8px 32px rgba(31, 38, 135, 0.37)',
-                            fontFamily: 'Inter, sans-serif'
+                            fontFamily: 'Inter, sans-serif',
+                            maxWidth: '100%'
                         },
                         saturation: {
                             borderRadius: '8px 8px 0 0',
